@@ -5,18 +5,18 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "dev": "ts-node-dev --respawn ./src/server/server.ts",
-    "start": "nodemon --legacy-watch --exec babel-node ./main/src/server/server.js",
+    "dev": "ts-node-dev --respawn ./src/index.ts",
+    "start": "nodemon --legacy-watch --exec babel-node ./main/src/index.js",
     "build": "rimraf ./main && gulp "
   },
   "author": "gabriella amah",
   "license": "ISC",
   "dependencies": {
+    "@types/mysql": "^2.15.17",
     "babel-eslint": "^10.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chokidar": "^3.4.2",
-    "connect-mongodb-session": "^2.4.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -27,11 +27,10 @@
     "helmet": "^4.2.0",
     "install": "^0.13.0",
     "jest": "^26.6.3",
-    "mongodb": "^3.6.4",
-    "mongoose": "latest",
-    "mongoose-findorcreate": "^3.0.0",
     "morgan": "^1.10.0",
     "multer": "latest",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
     "nodemon": "^2.0.4",
     "pdf-poppler": "^0.2.1",
     "socket.io": "^2.3.0",
@@ -51,7 +50,6 @@
     "@types/faker": "^5.1.5",
     "@types/gulp": "^4.0.8",
     "@types/jest": "^26.0.20",
-    "@types/mongoose": "^5.10.3",
     "@types/morgan": "^1.9.2",
     "@types/multer": "^1.4.5",
     "@types/node": "^14.14.22",
@@ -65,8 +63,6 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-tslint": "^8.1.4",
     "gulp-uglify": "^3.0.2",
-    "mongodb-memory-server": "^6.9.3",
-    "mongodb-memory-server-core": "^6.9.3",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.5.1",
     "ts-node": "^9.1.1",
@@ -83,11 +79,5 @@
     "setupFilesAfterEnv": [
       "./src/__test__/setup.ts"
     ]
-  },
-  "config": {
-    "mongodbMemoryServer": {
-      "debug": "1",
-      "version": "4.2.3"
-    }
   }
 }
