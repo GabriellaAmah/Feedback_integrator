@@ -1,23 +1,25 @@
-import http from 'http';
-import app from './app';
-import dotenv from 'dotenv';
-import ServerHandler from './utils/serverHandler';
-import "reflect-metadata";
-import {createConnection} from 'typeorm';
+import http from "http";
+import app from "./app";
+import dotenv from "dotenv";
+import ServerHandler from "./utils/serverHandler";
+import mongoose from "mongoose";
 
-dotenv.config()
+dotenv.config();
 
-const server = http.createServer(app)
-const port = process.env.PORT || 3000
+const server = http.createServer(app);
+const port = process.env.PORT || 3000;
 
+mongoose
+  .connect("mongodb://localhost/feedback", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    server.listen(port);
+  }).catch(err => {
+      console.log(err)
+      process.exit(1)
+  })
 
-createConnection().then(async connection => {
-    server.listen(port)
-}).catch(error => {
-    console.log(error)
-    process.exit(1)
-})
-
-server.on('error', ServerHandler.onError)
-server.on('listening', ServerHandler.onListen)
-
+server.on("error", ServerHandler.onError);
+server.on("listening", ServerHandler.onListen);
