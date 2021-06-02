@@ -5,10 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "start": " npm run build && node ./main/src/index.js",
+    "start": " yarn build && node ./main/src/index.js",
     "dev": "ts-node-dev --respawn ./src/index.ts",
     "start:dev": " yarn build && nodemon --legacy-watch --exec babel-node ./main/src/index.js",
-    "build": "npm run delete && gulp ",
+    "build": "yarn delete && gulp ",
     "build:dev": "nodemon ./src/index.ts --exec ts-node ./src/index.ts -e ts,graphql",
     "lint": "eslint",
     "delete": "rimraf ./main"
@@ -62,7 +62,6 @@
     "gulp-tslint": "^8.1.4",
     "gulp-uglify": "^3.0.2",
     "rimraf": "^3.0.2",
-    "ts-jest": "^26.5.1",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.1",
     "tslint": "^6.1.3",
