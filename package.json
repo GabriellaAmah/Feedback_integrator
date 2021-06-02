@@ -5,13 +5,13 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "start" : " yarn build && node ./main/src/index.js",
+    "start": " npm run build && node ./main/src/index.js",
     "dev": "ts-node-dev --respawn ./src/index.ts",
     "start:dev": " yarn build && nodemon --legacy-watch --exec babel-node ./main/src/index.js",
-    "build": "yarn delete && gulp ",
-    "build:dev" : "nodemon ./src/index.ts --exec ts-node ./src/index.ts -e ts,graphql",
-    "lint" : "eslint",
-    "delete" : "rimraf ./main"
+    "build": "npm run delete && gulp ",
+    "build:dev": "nodemon ./src/index.ts --exec ts-node ./src/index.ts -e ts,graphql",
+    "lint": "eslint",
+    "delete": "rimraf ./main"
   },
   "author": "gabriella amah",
   "license": "ISC",
@@ -28,6 +28,7 @@
     "express": "^4.17.1",
     "faker": "^5.1.0",
     "graphql": "^15.5.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "helmet": "^4.2.0",
     "jwt": "^0.2.0",
     "mongodb": "^3.6.6",
