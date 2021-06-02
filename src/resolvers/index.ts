@@ -1,7 +1,9 @@
-import getIndex from "../controllers/getIndex";
+import index from "../modules/getIndex"
 
-const rootResolver = {
-    index: getIndex
+const resolvers = {
+    Query : {
+        index
+    }
 }
 
-export default rootResolver
+export default resolvers

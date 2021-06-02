@@ -1,23 +1,12 @@
-import http from 'http';
-import app from './app';
-import dotenv from 'dotenv';
-import ServerHandler from './utils/serverHandler';
-import "reflect-metadata";
-import {createConnection} from 'typeorm';
+import app from "./shared/infra/http";
+import dotenv from 'dotenv'
 
 dotenv.config()
 
-const server = http.createServer(app)
-const port = process.env.PORT || 3000
+const path = process.env.GRAPHQL_SERVER_PATH
+const host = process.env.GRAPHQL_SERVER_HOST
+const port = process.env.PORT || 3000;
 
-
-createConnection().then(async connection => {
-    server.listen(port)
-}).catch(error => {
-    console.log(error)
-    process.exit(1)
+app.listen({port, path}, () => {
+    console.log(`Grahql started on http://${host}:${port}${path}`)
 })
-
-server.on('error', ServerHandler.onError)
-server.on('listening', ServerHandler.onListen)
-
