@@ -1,5 +1,5 @@
-import UserDb from "../../database/repository/user";
-import SuccessResponse from "../../utils/SuccessResponse";
+import UserDb from "../../../../database/repository/user";
+import SuccessResponse from "../../../../utils/SuccessResponse";
 
 interface userData {
   name: string;

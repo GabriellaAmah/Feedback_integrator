@@ -1,4 +1,4 @@
-import { userData } from "../../controllers/user/createUser";
+import { userData } from "../../modules/user/use-case/index.ts/createUser";
 import ErrorResponse from "../../utils/errorResponse";
 import { UserModel } from "../models/User";
 

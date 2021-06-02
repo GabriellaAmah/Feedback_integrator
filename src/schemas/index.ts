@@ -1,9 +1,11 @@
-import {buildSchema} from 'graphql';
+import {gql} from 'apollo-server-express';
 
-const schema = buildSchema(`
-    type Query{
-        index : String
+const typeDefs = gql`
+
+    type Query {
+        index: String
     }
-`)
 
-export default schema
+`
+
+export default typeDefs

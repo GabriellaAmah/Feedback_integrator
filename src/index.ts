@@ -1,25 +1,12 @@
-import http from "http";
-import app from "./app";
-import dotenv from "dotenv";
-import ServerHandler from "./utils/serverHandler";
-import mongoose from "mongoose";
+import app from "./shared/infra/http";
+import dotenv from 'dotenv'
 
-dotenv.config();
+dotenv.config()
 
-const server = http.createServer(app);
+const path = process.env.GRAPHQL_SERVER_PATH
+const host = process.env.GRAPHQL_SERVER_HOST
 const port = process.env.PORT || 3000;
 
-mongoose
-  .connect("mongodb://localhost/feedback", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    server.listen(port);
-  }).catch(err => {
-      console.log(err)
-      process.exit(1)
-  })
-
-server.on("error", ServerHandler.onError);
-server.on("listening", ServerHandler.onListen);
+app.listen({port, path}, () => {
+    console.log(`Grahql started on http://${host}:${port}${path}`)
+})

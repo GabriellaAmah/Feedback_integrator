@@ -1,13 +1,9 @@
-import getIndex from "../controllers/getIndex";
-import { createUser, userData } from "../controllers/user/createUser";
+import index from "../modules/getIndex"
 
-const rootResolver = {
-    index: getIndex,
-
-    createNewUser : (args : userData) => {
-        let {name, email, password, category} = args
-        return createUser({name, email, password, category})
+const resolvers = {
+    Query : {
+        index
     }
 }
 
-export default rootResolver
+export default resolvers
