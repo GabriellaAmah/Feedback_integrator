@@ -8,6 +8,7 @@ server.log
 build/Release
 
 #lock files
+yarn.lock
 package-lock.json
 
 test.html
